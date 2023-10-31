@@ -13,4 +13,4 @@ else:
         else:
             print(nums[k - 1])
     else:
-        print(nums[0])
+        print(nums[k - 1])
