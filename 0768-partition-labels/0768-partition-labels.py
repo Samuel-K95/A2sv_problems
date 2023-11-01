@@ -1,14 +1,18 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        store = {}
-        length = 0
-        left = 0
-        ans = []
-        for i in range(len(s)):
-            store[s[i]] = i
-        for right in range(len(s)):
-            length = max(store[s[right]], length)
-            if right == length:
-                ans.append(length - left + 1)
-                left = length + 1
-        return ans
+        def check(ele,ch):
+            eleCount=Counter(ele)
+            for k in eleCount:
+                if eleCount[k]!=ch[k]:
+                    return False
+            return True
+        result=[]
+        window=[]
+        cou=Counter(s)
+        for i in s:
+            window.append(i)
+            if check(window,cou):
+                result.append(len(window))
+                window=[]
+        return result
+            
