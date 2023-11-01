@@ -1,18 +1,24 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        def check(ele,ch):
-            eleCount=Counter(ele)
-            for k in eleCount:
-                if eleCount[k]!=ch[k]:
-                    return False
-            return True
-        result=[]
-        window=[]
-        cou=Counter(s)
-        for i in s:
-            window.append(i)
-            if check(window,cou):
-                result.append(len(window))
-                window=[]
-        return result
+        l=0
+        co=Counter()
+        ch=Counter(s)
+        re=[]
+        eleco=0
+        for r in range(len(s)):
+            if s[r] not in co:
+                eleco+=1
+            co[s[r]]+=1
+            # print(ch)
+            # print(co)
+            if ch[s[r]]==co[s[r]]:
+                eleco-=1
+            # print(eleco)
+            if eleco==0:
+                re.append(r-l+1)
+                if r+1<len(s):
+                    l=r+1
+        return re
+
+
             
