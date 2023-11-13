@@ -1,24 +1,15 @@
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
-        l=0
-        co=Counter()
-        ch=Counter(s)
-        re=[]
-        eleco=0
-        for r in range(len(s)):
-            if s[r] not in co:
-                eleco+=1
-            co[s[r]]+=1
-            # print(ch)
-            # print(co)
-            if ch[s[r]]==co[s[r]]:
-                eleco-=1
-            # print(eleco)
-            if eleco==0:
-                re.append(r-l+1)
-                if r+1<len(s):
-                    l=r+1
-        return re
-
-
-            
+        store = {}
+        for i in range(len(s)):
+            store[s[i]] = i
+        ans = []
+        end = 0
+        size = 0
+        for right in range(len(s)):
+            end = max(end,store[s[right]])
+            size += 1
+            if right ==  end:
+                ans.append(size)
+                size = 0
+        return ans
