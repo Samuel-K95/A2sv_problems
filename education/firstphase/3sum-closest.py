@@ -1,6 +1,7 @@
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
-        #similar approach with three sum but since the target can not be found from the sum  of the elements, we would store the smallest interval for each combination, and finally return it
+        # similar approach with three sum but since the target can not be found from the sum of the elements, 
+        # we would store the smallest interval for each combination, and finally return it
 
         #the curr pointer would iterate through the array and 
         nums.sort()
