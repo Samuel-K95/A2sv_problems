@@ -4,12 +4,10 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         count = Counter(nums)
-        c = 0
         for i in range(len(nums)):
-            if c < count[0]:
+            if i < count[0]:
                 nums[i] = 0
-            elif c >= count[0] and c < count[0] + count[1]:
+            elif i >= count[0] and i < count[0] + count[1]:
                 nums[i] = 1
-            elif c >= count[0] + count[1]:
+            elif i >= count[0] + count[1]:
                 nums[i] = 2
-            c += 1
