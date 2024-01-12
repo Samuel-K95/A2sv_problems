@@ -3,7 +3,13 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        count = Counter(nums)
+        c = 0
         for i in range(len(nums)):
-            for j in range(len(nums)-1):
-                if nums[j]>nums[j+1]:
-                    nums[j], nums[j+1]=nums[j+1], nums[j]
+            if c < count[0]:
+                nums[i] = 0
+            elif c >= count[0] and c < count[0] + count[1]:
+                nums[i] = 1
+            elif c >= count[0] + count[1]:
+                nums[i] = 2
+            c += 1
