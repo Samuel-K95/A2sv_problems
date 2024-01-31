@@ -10,12 +10,12 @@ class Solution:
         while node:
             comp.append(node.val)
             node = node.next
-        comp.reverse()
-        i = 0
-        while head:
-            if head.val != comp[i]:
+        left = 0
+        right = len(comp) - 1
+        while left < right:
+            if comp[left] != comp[right]:
                 return False
-            i += 1
-            head= head.next
+            left += 1
+            right -= 1
         return True
         
