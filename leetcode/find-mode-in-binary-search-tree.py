@@ -9,12 +9,12 @@ class Solution:
         count = defaultdict(int)
 
         def traverse(node):
-            if node and not node.left and not node.right:
-                count[node.val] += 1
-                return node
-            if node:
-                count[node.val] += 1
+            count[node.val] += 1
+            if not node.left and not node.right:
+                return
+            if node.left:
                 traverse(node.left)
+            if node.right:
                 traverse(node.right)
 
         traverse(root)
