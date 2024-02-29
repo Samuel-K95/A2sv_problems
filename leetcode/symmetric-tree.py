@@ -37,10 +37,8 @@ class Solution:
         inorder(root.left, 'l')
         inorder(root.right, 'r')
 
-        print(left_stack, right_stack)
-
         right_stack.reverse()
-        
+
         return left_stack == right_stack
 
             
