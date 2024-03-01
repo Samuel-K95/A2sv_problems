@@ -7,8 +7,6 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        
-        isFound = None
         def traverse(node, p, q):
             if not node:
                 return
