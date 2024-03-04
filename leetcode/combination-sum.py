@@ -2,18 +2,18 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         result = []
         vis = set()
-        def backtrac(arr):
-            if sum(arr) > target:
+        def backtrac(arr, tot):
+            if tot > target:
                 return
-            if sum(arr) == target:
+            if tot == target:
                 arr = sorted(arr)
-                if tuple(arr) not in vis:
+                dup  = tuple(arr) 
+                if dup not in vis:
                     result.append(arr)
-                    vis.add(tuple(arr))
-
+                    vis.add(dup)
             for j in range(len(candidates)):
-                backtrac(arr+[candidates[j]])
+                backtrac(arr+[candidates[j]], tot + candidates[j])
 
-        backtrac([])
+        backtrac([], 0)
 
         return result
