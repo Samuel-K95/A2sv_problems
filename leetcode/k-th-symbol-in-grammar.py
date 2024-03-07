@@ -1,24 +1,22 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
+        
+        def backtrack(n, s, k):
+            if n == 0:
+                return s
+            
+            mid = pow(2 , n) // 2
 
-        def recur(n, s, k):
-            if n == 1:
+            if k > mid:
+                k -= mid
                 if s == 0:
-                    if k == 1:
-                        return 0
-                    else:
-                        return 1
+                    return backtrack(n-1, 1, k)
                 else:
-                    if k == 1:
-                        return 1
-                    else:
-                        return 0
-            curr = (2 ** (n - 1)) // 2
-
-            if curr >= k:
-                return recur(n -1, s, k)
+                    return backtrack(n-1, 0, k)
             else:
-                s = 1-s
-                return recur(n-1, s, k - curr)
+                if s == 0:
+                    return backtrack(n-1, 0, k)
+                else:
+                    return backtrack(n-1, 1, k)
 
-        return recur(n, 0, k)
+        return backtrack(n, 0, k)
