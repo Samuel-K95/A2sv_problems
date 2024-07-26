@@ -1,0 +1,26 @@
+# Problem: Two Sum - https://leetcode.com/problems/two-sum/
+
+class Solution {
+  List<int> twoSum(List<int> nums, int target) {
+    int leng = nums.length;
+    int left = 0;
+    int right = leng - 1;
+    List<int> ans = [0, 1];
+    List<List<int>>dup = [];
+    for (var i = 0; i < leng; i++){
+        dup.add([nums[i], i]);
+    }
+    dup.sort((a, b) => a[0].compareTo(b[0]));
+    while (left < right){
+        if (dup[left][0] + dup[right][0] < target){
+            left += 1;
+        } else if (dup[left][0] + dup[right][0] > target){
+            right -= 1;
+        }else{
+            ans = [dup[left][1], dup[right][1]];
+            break;
+        }
+    }
+    return ans;
+  }
+}
